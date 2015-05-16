@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>VBScript</title>
+<style>
+body {  
+ background-color: #d0e4fe;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+}
+
+h2,h3 {
+    color: orange;
+  text-align: left;
+}
+	
+.vBScript {
+    background-color:white;
+    color:black;
+	font-family: "Times New Roman";
+    font-size: 14px;
+	text-align: left;
+    margin:4px;
+    padding:10px;
+}
+
+span.red{
+color:red;
+}
+</style>
+</head>
+
+<body>
+<div id="main">
+
+<div class="vBScript">
+<p>
+<h1>VBScript</h1>
+<pre>
+<h2>Introduction to VBScript</h2>
+VBScript is a client-side scripting language like JavaScript. VBScript stands for Visual Basic Script which is a light version of Microsoft Visual Basic. 
+The syntax of VBScript is very similar to that of Visual Basic. VBScript was developed the intention of developing dynamic web pages those are  
+to be more lively and interactive.
+
+<b>
+VBScript is the default scripting language in ASP (Active Server Pages).
+VBScript is just a scripting language that cannot run its code on its own. It needs a bigger programming language to host it.
+There are 3 environments where VBScript can run.
+IIS (Internet Information Server) – Microsoft’s web server
+WSH (Windows Script Host) – The native hosting environment of the Windows OS
+IE (Internet Explorer) – The simplest hosting environment we can use to run VBScripts
+
+Embed our VBScript code within a very basic HTML code seen VBScript in action by running the particular HTML file on 
+Internet Explorer web browser. Only the section starting with script comes as part of VBScript code and string sequence in 
+the document.write() and response.write() will be displayed by IE as page text.
+</b>
+
+2 simple tools create and run VBScript code
+Internet Explorer - any version, but it is good to use IE6 or above.
+and Text Editor.
+
+
+<h2>Declaring and Using Variables</h2>
+Variables are used to hold a value or an expression that is a piece of data to work with.
+
+<h3>Declaring Variables</h3>
+Declaring variables is same as creating variables because you are instructing the computer to reserve memory space. 
+
+<b>
+Variable name must begin with a letter. Examples: salary, mark etc. 
+Variables beginning with numbers or special characters are not allowed. Examples: 1stSchool, 3rdCar, _name etc.
+Variable name cannot exceed 255 characters.
+Variable name should not contain a period (.).
+
+For declaring variables, use the keyword Dim. 
+syntax: Dim salary;
+initializing the variable
+salary = 10000
+
+Declare and initialize the variable separately.
+</b>
+
+<h3>Loose Binding</h3>
+<b>
+VBScript provides to use variables without declaring it with Dim keyword(called loose binding). 
+</b>
+For example, without having the statement Dim student, you can assign a value to the variable student like –
+student = “John”
+<b>
+Specify the statement Option Explicit at the beginning of your VBScript code.
+</b>
+
+Code:
+<html>
+<body>
+<script type="text/vbscript">
+Option Explicit
+‘Dim markE, markM, markT
+markE=90
+markM=86
+markT=markE+markM
+document.write("Your marks in English is " & markE & "." & "<br />")
+document.write("Your marks in Mathematics is " & markM & "." & "<br />")
+document.write("Your total marks is " & markT & ".")
+</script>
+ 
+</body>
+</html>
+
+<b>Declared variables before using it after specifying Option Explicit statement.
+To concatenate two strings , you need to use “&”.
+If declare variables using public and private keywords, it will change the scope of your variables.
+Store multiple values in a single variable and such variables are known as array variables.
+You can also create multi dimensional arrays having up to 60 dimensions.
+</b>
+
+
+ Code:
+<script type="text/vbscript">
+Option Explicit
+Dim students(19), marks(19)
+students(0) = "Htan"
+marks(0) = 95
+students(1) = "Emma"
+marks(1) = "83"
+students(2) = "Kevin"
+marks(2) = 87
+ 
+document.write(students(0) & " has scored " & marks(0)  & ".<br />")
+document.write(students(1) & " has scored " & marks(1)  & ".<br />")
+document.write(students(2) & " has scored " & marks(2)  & ".<br />")
+</script>
+ 
+
+You can add details of up to 20 students as set the size of the array as 20 (as index starts from 0).
+
+
+<h3>Variant Subtypes</h3>
+<b>
+VBScript has only one data type such as numbers and Strings called Variant. Variant is a special kind of data type 
+which can hold different kinds of information as using as number and String context.
+If you use Variant in a numeric context, it behaves as a number and when you use it in a string context, 
+it behaves as a string. In other words, when you specify salary=10000, VBScript assumes that salary is a numeric data type.
+Variant is the only data type of VBScript and variant has different subtypes including String, Boolean, Integer, Currency etc.
+you can use variant type to store Boolean values, currency, date and so on. 
+These different categories of information that can be contained in a Variant are called sub types. 
+
+Following is the list of variant subtypes.
+Empty: A special subtype to represent a variable that has not been assigned with any value yet.
+Null: A special subtype to represent a variable assigned with a null value.
+Integer: Using 2 bytes to express signed integer in the range -32,768 to 32,767.
+Long: Using 4 bytes to express signed integers ranging from -2,147,483,648 to 2,147,483,647.
+Single: Using 4 bytes to express real numbers in floating-point format ranging from -3.402823e38 to -1.401298e-45 for negative values, and 
+from 1.401298e-45 to 3.402823e38 for positive value.
+Double: Using 8 bytes to express real numbers in floating-point format ranging from -1.79769313486232e308 to -4.94065645841247e-324 
+for negative values, and from 4.94065645841247e-324 to 1.79769313486232e308 for positive values.
+Currency: Using 8 bytes to express real numbers in decimal format ranging from -922,337,293,685,477.5808 to 922,337,293,685,477.5807.
+Date: Using 8 bytes to express dates ranging from January 1, 100 to December 31, 9999.
+String: Using 1 byte per character to express a sequence of characters that can be up to approximately 2 billion characters.
+Object: A special subtype to represent a reference to an object.
+Error: A special subtype to represent an error number.
+Boolean: Using 2 bytes to contain either True or False.
+Byte: Using 1 byte to express integer in the range 0 to 255.
+
+There are two built-in VBScript functions that help you know the subtype of a variable: “varType()” and “typeName()”. 
+The vartype returns the numeric representation and typeName() returns the text representation of the subtype of the variable. 
+Each subtype has a predefined numeric representation.
+</b>
+
+
+<h2>Operators, Operator Precedence & Constants in VBScript</h2>
+<h3>Operators</h3>
+An Operator works either on values or variables to perform some task. 
+There are mainly three kinds of operators in VBScript: Arithmetic, Comparison and Logical operators.
+
+Arithmetic operators are used for arithmetic calculations.
+Different arithmetic operators are
++ (addition)
+- (subtraction)
+* (multiplication)
+/ (division)
+% (modulus)
+^ (exponentiation)
+& (concatenation)
+
+Comparison operators are used to compare two values. Different comparison operators are == , <>, < , >, <= and >=. 
+Suppose, you have two variables a and b with values 5 and 9 respectively,
+a==b  will return false.
+a<>b will return true.
+a<b will return true.
+a>b will return false.
+a<=b will return true.
+a>=b will return false.
+
+Logical operators are used for logical operations. Some of the logical operators are AND, OR, NOT and XOR. 
+Suppose, you have two variables x and y with values true and false respectively, then the results for the following logical operations will be:
+x AND y  will return false.
+x OR y will return true.
+NOT(x OR y) will return false.   
+x XOR y will return true.
+
+
+<h3>Operator Precedence</h3>
+When several operators occur in an expression, each part is evaluated in a predetermined order called operator precedence. 
+When expressions contain operators from more than one category-
+arithmetic operators are evaluated first
+comparison operators are evaluated next
+logical operators are evaluated last
+
+Arithmetic operators are evaluated in the following order:
+exponentiation
+multiplication
+division
+modulus
+addition and subtraction
+and finally concatenation.
+
+Comparison operators all have equal precedence; that is, they are evaluated in the left-to-right order in which they appear.
+
+Logical operators are evaluated in the following order:
+NOT
+AND
+OR
+XOR.
+
+You can use parentheses (opening and closing brackets) to change the normal order of precedence to the way you want. 
+Within parentheses normal operator precedence is maintained.
+
+<b>
+Constants
+Use the keyword “const” in order to declare a constant not to use the predefined VBScript constants. 
+After declaring a constant, if not change its value, if then thrown an error.
+const pi = 3.14
+
+</b>
+
+<h2>Using Conditional Statements in VBScript</h2>
+In VBScript, there are four types of conditional statements: If….Then, If…..Then….Else, If…Then…..Else If and Select Case.
+
+
+If….Then Statement
+You will use If…Then statement, if you want to execute some code when a specific condition is true. 
+If loggedIn == true Then
+document.write("Welcome")
+End If
+NOTE:If you forget to end the code with End If, you will not get any output.
+
+
+
+If…..Then….Else Statement
+Use If….Then….Else statement, if you want to select one of two blocks of code to execute. 
+If time <= 10 Then
+document.write("Hi, Good Morning")
+Else
+document.write("Hi, Good Day")
+End If
+
+
+
+If…Then…..ElseIf Statement
+You will be using If…..Then…….ElseIf statement, if you have to select one of many blocks of code to execute.
+
+If today="Sunday" Then
+document.write("Today is Sunday")
+ElseIf today="Monday" Then
+document.write("Today is Monday")
+ElseIf today="Tuesday" Then
+document.write("Today is Tuesday")
+ElseIf today="Wednesday" Then
+document.write("Today is Wednesday")
+ElseIf today="Thursday" Then
+document.write("Today is Thursday")
+ElseIf today="Friday" Then
+document.write("Today is Friday")
+ElseIf today="Saturday" Then
+document.write("Today is Saturday")
+End If
+
+
+Select Case Statement
+Select Case statement can also be used if you have to select one of many blocks of code to execute. 
+Select Case today
+Case "Sunday"
+document.write("Today is Sunday")
+Case "Monday"
+document.write("Today is Monday")
+Case "Tuesday"
+document.write("Today is Tuesday")
+Case "Wednesday"
+document.write("Today is Wednesday")
+Case "Thursday"
+document.write("Today is Thursday")
+Case "Friday"
+document.write("Today is Friday")
+Case "Saturday"
+document.write("Today is Saturday")
+End Select
+
+
+<html>
+<head>
+<script type="text/vbscript">
+Dim age
+age = InputBox("Enter your age")
+If age<18 Then
+document.write("You are too young.")
+ElseIf age<45 Then
+document.write("You are still young.")
+ElseIf age<70 Then
+document.write("You are getting older.")
+Else
+document.write("You are too old.")
+End If
+ 
+</script>
+ 
+</head>
+<body>
+</body>
+</html>
+
+
+
+<%
+i=hour(time)
+If i <  10 Then
+  response.write("Good morning!")
+Else
+  response.write("Have a nice day!")
+End If
+%>
+
+
+
+<%
+i=hour(time)
+If i = 10 Then
+      response.write("Just started...!")
+ElseIf i = 11 Then
+      response.write("Hungry!")
+ElseIf i = 12 Then
+      response.write("Ah, lunch-time!")
+ElseIf i = 16 Then
+      response.write("Time to go home!")
+Else
+      response.write("Unknown")
+End If
+%>
+
+
+
+<%
+d=weekday(Date)
+Select Case d
+   Case 1
+     response.write("Sleepy Sunday")
+   Case 2
+     response.write("Monday again!")
+   Case 3
+     response.write("Just Tuesday!")
+   Case 4
+     response.write("Wednesday!")
+   Case 5
+     response.write("Thursday...")
+   Case 6
+     response.write("Finally Friday!")
+   Case Else
+     response.write("Super Saturday!!!!")
+End Select
+%>
+
+<p>This example demonstrates the "Select Case" statement.</p>
+<p>You will receive a different greeting based on what day it is.</p>
+<p>Note that Sunday=1, Monday=2, Tuesday=3, etc.</p>
+
+
+
+
+
+<h2>Using Loops in VBscipt</h2>
+Loops are used to execute the same block of code again and again.
+Some of the VBScript looping statements are Do While, Do Until, For…..Next and so on.
+
+Do While Loop
+<script type="text/vbscript">
+Dim x
+x=1
+Do While x<5
+document.write("Welcome.")
+x=x+1
+Loop
+</script>
+
+
+
+<script type="text/vbscript">
+Dim x
+x=7
+Do
+document.write("Welcome.")
+x=x+1
+Loop While x<5
+</script>
+
+
+
+Do Until Loop
+<script type="text/vbscript">
+Dim x
+x=1
+Do Until x=5
+document.write("Welcome.")
+x=x+1
+Loop
+</script>
+
+
+
+If you want to exit a Do While or Do Until loop in between, then you can use Exit Do statement. Suppose you want to exit the block when the value 
+of x becomes 3.
+<script type="text/vbscript">
+Dim x
+x=1
+Do Until x=5
+If x=3 Then Exit Do
+document.write("Welcome.")
+x=x+1
+Loop
+</script>
+
+
+
+While…..Wend Loop
+
+While….Wend loop is similar to Do While loop though not used commonly. 
+<script type="text/vbscript">
+Dim x
+x = 1
+While x < 5
+document.write("Welcome.")
+x=x+1
+Wend
+</script>
+
+
+
+For-Next Loop
+The For-Next loop can be used to execute a block of code for a specific number of times. The “For statement” specifies the counter variable and 
+its start and end values. 
+
+For i = 1 To 5
+  document.write("The number is " & i & " ")
+Next
+
+<%
+For i = 0 To 5
+  response.write("The number is " & i & "<br>")
+Next
+%>
+
+
+For-Step-Next Loop
+By default, the counter variable is incremented by one. If you want to increase or decrease the counter variable by the value you specify, 
+then you can use For….Step….Next loop.
+Increment the counter by 2, 
+For i = 1 To 5 Step 2
+  document.write("The number is " & i & "<br />")
+Next
+
+
+
+the counter variable (i) is decrease by two
+For i=10 To 2 Step -2
+   some code
+ Next 
+ </script>
+
+ <span class="red">
+If you want to exit a For Next or For Step Next loop in between, then you can use Exit for statement. 
+</span>
+
+Suppose you want to exit the block when the value of i becomes 3
+
+<script type="text/vbscript">
+For i = 1 To 5 Step 2
+  If i=3 Then Exit For
+  document.write("The number is " & i & "<br />")
+Next
+</script>
+
+
+
+For-Each-Next Loop
+<span class="red">
+If you want to repeat a block of code for each item in a collection or for each element of an array, then you need to use For….Each….Next loop.
+</span>
+
+
+<script type="text/vbscript">
+Dim students(4)
+students(0)="John"
+students(1)="Hanah"
+students(2)="Sarah"
+students(3)="Kevin"
+students(4)="Emma"
+ 
+For Each x In students
+  document.write(x & "<br />")
+Next
+</script>
+
+
+<%
+Dim cars(2)
+cars(0)="Volvo"
+cars(1)="Saab"
+cars(2)="BMW"
+
+For Each x In cars
+   response.write(x & "<br>")
+Next
+%>
+
+
+
+<h2>Using Procedures & Functions in VBScript</h2>
+<span class="red">
+VBScript procedures are used mainly for code organization and reuse.
+A procedure is a block of code that ideally performs a single function i.e., a block of code that processes an input or handles a file.
+
+There are two types of VBScript procedures: Sub procedures and Function procedures.
+Sub Procedures
+If you want to execute a series of statements without returning any value, then you can use sub procedures Sub... End Sub statements respectively. 
+Sub procedures can take arguments, but cannot return a value. 
+
+Sub mysub()
+  some statements
+End Sub
+
+or
+
+Sub mysub(argument1,argument2)
+  some statements
+End Sub
+
+
+calling method of ouputMessage code call outputMessage() combine inside script tag:
+
+
+<script type="text/vbscript">
+ 
+Sub outputMessage()
+document.write("Welcome")
+End Sub
+call outputMessage()
+</script>
+
+
+When you call a procedure you can use the Call statement, like this:
+call outputMessage()
+Or, you can omit the Call statement, like this:
+outputMessage()
+
+
+Function Procedures
+Use function procedures, commonly known as function, if you want to execute a series of statements and return a value.
+Function and End Function statements respectively.
+A function procedure may or may not take an input. can take arguments that are passed to it by a calling procedure.
+without arguments, must include an empty set of parentheses ().
+returns a value by assigning a value to its name.
+
+Function myfunction()
+  some statements
+  myfunction=some value
+End Function
+or
+
+Function myfunction(argument1,argument2)
+  some statements
+  myfunction=some value
+End Function
+</span>
+
+
+<script type="text/vbscript">
+Function findArea(radius)
+   const pi=3.14
+   area = pi*radius*radius
+   findArea = area
+End Function
+document.write("The area of the circle when the radius is 20 is " & findArea(20) &"<br/>")
+document.write("The area of the circle when the radius is 10 is " & findArea(10))
+ </script>
+
+
+
+<%
+Function myfunction()
+myfunction=Date()
+End Function
+
+response.write("Today's date: ")
+response.write(myfunction())
+%>  
+
+<p>A Function procedure can return a result.</p>
+
+
+<%
+Function myfunction(a,b)
+myfunction=a+b
+End Function
+response.write(myfunction(5,9))
+%>
+
+
+ByRef and ByVal Parameters
+<b>
+You can pass arguments to the procedures by reference or by value. If you do not specify the argument/arguments to call a procedure, 
+then passed by reference by default. 
+If the changes are made to the arguments to persist even after the procedure is called, then you need to pass the arguments by reference. 
+When an argument is passed by value, any changes that the called procedure makes to the value of the variable do not persist after the procedure is called. 
+The keywords ByRef and ByVal are used to pass arguments by reference and by value respectively.
+</b>
+
+<script type="text/vbscript">
+Function returnResult(ByRef value)
+   value = value +1
+   returnResult = value
+End Function
+Dim x
+x=5
+call returnResult(x)
+document.write(x)
+</script>
+
+<span class="red">
+// the output is 6.// Change Function returnResult(ByRef value) to Function returnResult(ByVal value)// output will be 5.
+</span>
+
+Ref: http://simply-tutorial.com/blog/2014/10/08/vbscript-tutorials-for-beginners/
+<hr>
+<b>
+VBScript on a Server
+VBScript is used as a server-side scripting language. It is not used for scripting in a browser.
+Because the scripts are executed on the server, you can not view the code in a browser. You will only see the output from ASP which is plain HTML.
+</b>
+
+When VBScript is used with ASP, the statement response.write() produces output.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<%response.write("This is my first VBScript!")%>
+
+</body>
+</html>
+
+
+<html>
+<body>
+
+<%
+Dim x(2,2)
+x(0,0)="Volvo"
+x(0,1)="BMW"
+x(0,2)="Ford"
+x(1,0)="Apple"
+x(1,1)="Orange"
+x(1,2)="Banana"
+x(2,0)="Coke"
+x(2,1)="Pepsi"
+x(2,2)="Sprite"
+for i=0 to 2
+    response.write("<p>")
+    for j=0 to 2
+        response.write(x(i,j) & "<br />")
+    next
+    response.write("</p>")
+next
+%>
+
+</body>
+</html>
+
+<hr>
+UBound
+Syntax: UBound(ArrayName, Dimension)
+The UBound function returns the upper limit for the number of elements in an array (the elements can be empty).
+
+Code:
+<% Dim katarray(5) %> 
+ <% katarray(0) = "Mountain lion" %> 
+ <% katarray(1) = "Bobcat" %> 
+ <% katarray(2) = "Jaguar" %> 
+ <% =UBound(katarray) %>
+Output:
+5
+
+
+Code:
+<% Dim arrayfish(4,6) %> 
+ <% arrayfish(0,0) = "Neon tetra" %> 
+ <% arrayfish(0,1) = "Angle fish" %> 
+ <% arrayfish(0,2) = "Discus" %> 
+ <% arrayfish(1,0) = "Golden dojo" %> 
+ <% arrayfish(1,1) = "Clown loach" %> 
+ <% arrayfish(1,2) = "Betta" %> 
+ <% =UBound(arrayfish, 2) %>
+Output:
+6
+<hr>
+<b>
+When you were using the FileSystemObject from an ASP page, then you were manipulating the file-system of the server. This is permitted.
+ you are executing the code on the client. It is not permitted to access the clients file-system from inside Internet Explorer, 
+ as it would have serious security implications. The technical term is "sandboxing".
+
+If you need to interact with the file-system on the client machine, you will need to use a technology such as ActiveX.
+
+You should consider using HTML Applications by renaming your file with a .hta suffix.
+
+An HTA executes without the constraints of the internet browser security model; in fact, it executes as a "fully trusted" application.
+
+HTML files running inside internet browsers are considered as "untrusted" because the code comes from the internet, and is generally 
+considered as "untrusted" as such the browser enforces a tight security model that prevents those HTML pages gaining access to your computer, 
+which is why the FileSystemObject is unable to open the text file.
+</b>
+
+
+
+<hr>
+VBScript Examples: http://www.w3schools.com/Vbscript/vbscript_examples.asp
+<hr>
+
+VBScript/QTP
+
+' File: test.vbs
+'
+
+Option Explicit
+
+const MINVALUE = 0
+const MAXVALUE = 1000
+
+dim a(20)                  
+
+Randomize
+
+call startIt(a, MINVALUE, MAXVALUE) 'test setup for doSomething
+
+call takaAlook(a, "takeAlook1")     'inspect the test setup
+
+call doSomething(a)                 'do something
+
+call takeAlook(a, "takeAlook2")     'pass/fail of doSomething?
+
+
+'----------------------------------------------------------------------------
+'
+' 
+SUB doSomething(ByRef a())
+   dim pass                               '
+   dim done                               ' 
+   dim i, temp
+
+   pass = 0
+   done = FALSE
+
+   while not done 
+      done = TRUE                      
+
+      for i = UBound(a) to pass+1 step -1
+         if a(i) < a(i-1) then
+            temp = a(i)                     
+            a(i) = a(i-1)
+            a(i-1) = temp
+            done = FALSE                
+         end if
+      next
+      pass = pass + 1
+   wend
+
+end SUB
+
+'----------------------------------------------------------------------------
+' 
+SUB takeAlook(ByRef myA, ByRef description)
+   dim output, i
+   output = ""
+   for i = 0 to UBound(myA)
+      output = output & "myA(" & i & ") = " & myA(i) & vbNewLine
+   next
+
+   MsgBox output, ,description
+end SUB
+
+'----------------------------------------------------------------------------
+'
+FUNCTION giveMeSomething(ByVal min, ByVal max)
+   giveMeSomething = CInt( ((max - min + 1) * Rnd) + min)
+end FUNCTION
+
+'----------------------------------------------------------------------------
+'
+SUb startIt(ByRef a, ByRef minValue, ByRef maxValue)
+   dim index
+
+  
+   for index = 0 to UBound(a)
+      a(index) = giveMeSomething(minValue, maxValue)
+   next
+end SUB
+
+'-------------------------------------------------------------------------------
+
+1. Q: What is "doSomething" doing?
+   A:
+
+2. Q: What particular testing method is employed in the code, i.e, what are startIt and takeAlook doing?
+   A:
+
+3. Q: Which functional test cases would you try for doSomething?
+   A:
+
+4. Q: Implement 2 of the test case in 3).
+   A:
+
+
+</pre>
+</p>
+</div>
+
+</div>
+</body>
+</html>

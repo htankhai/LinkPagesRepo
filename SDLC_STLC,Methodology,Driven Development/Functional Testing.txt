@@ -1,0 +1,10 @@
+Functional Testing
+Common five different points apply in Testing
+1.Configuration(right parts in the right places)
+2.Security(entry points)
+3.Functionality
+	input-> output
+4.Performance
+	load, speed, power, smoke testing
+5.Environment(compatibiliry)
+At least three points are used.
