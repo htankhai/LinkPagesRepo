@@ -1,0 +1,11 @@
+Web Services is for application level consuming
+SOAP : JAX-WS
+REST : JAX-RS
+
+Web application is for user consuming
+
+WS written any programming
+WSDL : written XML which is independent language : SOAP / REST message
+UDDI : directory
+SEI : Service Endpoint Interface connecting to WS
+

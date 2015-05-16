@@ -1,0 +1,316 @@
+<html>
+<head>
+<title>JavaScript</title>
+<style>
+#header {
+    background-color:red;
+    color:white;
+    text-align:center;
+    padding:5px;	 
+}
+
+body {   
+background-color: #FFFFCC;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+}
+
+h2,h3 {
+    color: orange;
+    text-align: left;
+	}
+	
+
+.JavaScript {
+    background-color:white;
+    color:black;
+    margin:10px;
+    padding: 10px;
+}
+span.red{
+color:red
+}
+
+</style>
+</head>
+
+<body>
+
+<div class ="javaScript">
+<p>
+<h1>JavaScript</h1>
+<pre>
+JavaScript is an open source & most popular client side scripting language supported by all browsers.
+JavaScript can be run on any operating systems and almost all web browsers.
+
+<h2>Introduction to JavaScript</h2>
+JavaScript is a very powerful client-side scripting language that is used mainly for enhancing the interaction of a user with the webpage 
+more lively and interactive, with the help of JavaScript. 
+JavaScript is also being used widely in game development and mobile application development.
+Java is a very complex programming language whereas JavaScript is only a scripting language. The syntax of JavaScript is mostly influenced 
+by the programming language C.
+
+Run JavaScript
+<b>
+Being a scripting language, JavaScript cannot run on its own. In fact, the browser is responsible for running JavaScript code. 
+When a user requests an HTML page with JavaScript in it, the script is sent to the browser and it is up to the browser to execute it. 
+</b>
+All modern web browsers support JavaScript which runs on any operating system including Windows, Linux or Mac. 
+Thus, JavaScript overcomes the main disadvantages of VBScript which is limited to just IE and Windows.
+
+JavaScript Code
+<b>
+You should place all your JavaScript code within <script> tags (<script> and </script>) if you are keeping your JavaScript code within 
+the HTML document itself.
+Use the type attribute within the script tag and set its value to text/javascript:
+</b>
+<script type="text/javascript">
+...
+</script>
+
+
+<h2>Using Variables in Javascript</h2>
+<b>
+Variables are used to store values (name = “John”) or expressions (sum = x + y). Declare variable before using the keyword var to declare a variable.
+var name;
+You can assign a value to the variable either while declaring the variable or after declaring the variable.
+var name = "John";
+
+or
+
+var name;
+name = "John";
+
+Naming Variables
+ variable names should start with a letter and they are case sensitive.
+ </b>
+ 
+<h2>Arrays in JavaScript</h2>
+<b>
+An array is an object that can store a collection of items. Arrays become really useful when you need to store large amounts of data of the same type.
+You can access the items in an array by referring to its index number and the index of the first element of any array is zero.
+
+Creating an Array
+You can create and initalize an array in JavaScript:
+ var students = ["John", "Ann", "Kevin"];
+ Add more elements to the students array, 
+ students[3] = "Emma";
+students[4] = "Rose";
+
+Also create an array using Array constructor
+var students = new Array("John", "Ann", "Kevin");
+
+or
+
+var students = new Array();
+ students[0] = "John";
+ students[1] = "Ann";
+ students[2] = "Kevin";
+</b>
+
+<b>
+Properties and Methods
+length property –> If you want to know the number of elements in an array, you can use the length property.
+prototype property –> If you want to add new properties and methods, you can use the prototype property.
+reverse method –> You can reverse the order of items in an array using reverse method.
+sort method –> You can sort the items in an array using sort method.
+pop method –> You can remove the last item of an array using pop method.
+shift method –> You can remove the first item of an array using shift method.
+</b>
+
+
+<h2>Use Loops in Javascript</h2>
+Loops are useful when you have to execute the same lines of code repeatedly, for a specific number of times or as long as a specific condition is true. 
+
+There are mainly four types of loops in JavaScript.
+for loop
+for/in loop 
+while loop
+do…while loop
+
+
+<h2>Use Conditional Statements in JavaScript</h2>
+Conditional statements are used to decide the flow of execution based on different conditions. If a condition is true, you can perform 
+one action and if the condition is false, you can perform another action.
+
+There are mainly three types of conditional statements in JavaScript.
+If statement:
+Use If statement if you want to check only a specific condition.
+If…Else statement:
+ Use If….Else statement if you have to check two conditions and execute different set of codes.
+If…Else If…Else statement:
+ Use If….Else If….Else statement if you want to check more than two conditions.
+ 
+
+<h2>Functions in JavaScript</h2>
+<b>
+ A function is a block of code including the repeated lines of code which will be executed only if it is called. 
+
+Creating a Function
+Use the keyword function followed by the name of the function.
+Syntax:
+function functionname()
+ {
+   lines of code to be executed
+ }
+
+Syntax:
+function functionname(arg1, arg2)
+ {
+   lines of code to be executed
+ }
+
+Syntax:
+function functionname(arg1, arg2)
+ {
+   lines of code to be executed
+   return val1;
+ }
+</b>
+ 
+ <h2>Cookies in JavaScript</h2>
+ A cookie is a piece of data that is stored on your computer to be accessed by your browser.
+ Cookies are saved as key/value pairs.
+ 
+ Relevance of Cookies
+The communication between a web browser and server happens using a stateless protocol named HTTP. Stateless protocol treats each request independent. 
+So, the server does not keep the data after sending it to the browser. But in many situations, the data will be required again. 
+With cookies, the web browser will not have to communicate with the server each time the data is required. Instead, it can be fetched directly 
+from the computer.
+
+Create, Access and Remove Cookies
+You can create cookies using document.cookie property
+document.cookie = "cookiename=cookievalue"
+
+You can even add expiry date to your cookie so that the particular cookie will be removed from the computer on the specified date. 
+The expiry date should be set in the UTC/GMT format. 
+<b>
+If you do not set the expiry date, the cookie will be removed when the user closes the browser.
+</b>
+
+document.cookie = "cookiename=cookievalue; expires= Thu, 21 Aug 2014 20:00:00 UTC"
+You can also set the domain and path to specify to which domain and to which directories in the specific domain the cookie belongs to. 
+<b>By default, a cookie belongs to the page that sets the cookie.
+</b>
+
+document.cookie = "cookiename=cookievalue; expires= Thu, 21 Aug 2014 20:00:00 UTC; path=/ "
+//create a cookie with domain to the current page and path to the entire domain.
+
+You can access the cookie, return all the cookies saved for the current domain.
+
+var x =  document.cookie
+To delete a cookie, you just need to set the value of cookie to empty and set the value of expires to a passed date.
+
+document.cookie = "cookiename= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+
+  
+ 
+ <h2>Use DOM and Events in JavaScript</h2>
+ <b>
+ JavaScript can access all the elements in a webpage making use of Document Object Model (DOM). In fact, the web browser creates a DOM of the webpage 
+ when the page is loaded. The DOM model is created as a tree of objects.
+ Using DOM, JavaScript can perform multiple tasks. It can create new elements and attributes, change the existing elements and attributes and 
+ even remove existing elements and attributes. JavaScript can also react to existing events and create new events in the page.
+
+Common Methods and Properties
+ 1.getElementById:  To access elements and attributes whose id is set.
+ 2.innerHTML: To access the content of an element.
+ 3.getElementsByTagName: To access elements and attributes using tag name. This method will return an array of all the items with the same tag name.
+ 4.createElement:  To create new element
+ 5.removeChild: Remove an element
+ 6.You can add an event handler to a particular element
+ </b>
+	 document.getElementById(<em>id</em>).onclick=function()</p>
+ 
+   {
+ 
+   lines of code to be executed</p>
+ 
+   }
+or
+
+document.getElementById(id).addEventListener(&#39;click&#39;, functionname)
+
+ 
+ <h2>Object Oriented JavaScript</h2>
+ <b>
+ variables or arrays are not sufficient to simulate real life situations. JavaScript allows you to create objects that act like real life objects.
+ You can create properties and methods to your objects.
+ </b>
+ 
+ You can create an object like this:
+
+varobjName = new Object();
+ 
+objName.property1 = value1;
+ 
+objName.property2 = value2;
+ 
+objName.method1 = function()
+ 
+{
+ 
+line of code
+ 
+}
+
+or
+
+varobjName= {property1:value1, property2:value2, method1: function()
+ 
+{ lines of code} };
+
+
+Access Object Properties and Methods
+objectname.propertyname;
+objectname.methodname();
+
+
+for/in loop
+Syntax:
+
+for (variablename in objectname)
+ 
+{
+ 
+lines of code to be executed
+ 
+}
+The for/in loop is usually used to loop through the properties of an object. 
+
+ 
+ 
+ <h2>Internal & External JavaScript</h2>
+ <b>
+ You can use JavaScript code in two ways.
+  internally within your HTML document 
+   a separate external file and then point to that file from your HTML document.
+   
+   If you have only a few lines of code that is specific to a particular webpage, then it is better to keep your JavaScript code internally within 
+   your HTML document.
+   On the other hand, if your JavaScript code is used in many webpages, then you should consider keeping your code in a separate file. In that case, 
+   if you wish to make some changes to your code, you just have to change only one file which make code maintenance easy in easy debugging. 
+   
+   
+   External JavaScript
+   Save the JavaScript code in a new file with the extension .js. Then, add a line of code in all your web pages to point to your .js file like this:
+
+   Note: It is assumed that the .js file and all your web pages are in the same folder. If the .js file is in a different folder, you need to specify 
+   the full path to your file in src attribute.
+   
+   
+<script type="text/javascript" src="currentdetails.js">
+</b>
+ 
+  
+ http://simply-tutorial.com/blog/2014/10/13/interactive-javascript-tutorials/
+
+</pre>
+</p>
+</div>
+
+</body>
+</html>

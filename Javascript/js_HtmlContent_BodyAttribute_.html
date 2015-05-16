@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Can Change HTML Attributes such as Images. </h1>
+
+<img id="myImage" onclick="changeImage()" src="pic_bulbon.gif" width="100" height="180">
+
+<p>Click the light bulb to turn on/off the light.</p>
+
+<script>
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("bulbon")) {
+        image.src = "pic_bulboff.gif";
+    } else {
+        image.src = "pic_bulbon.gif";
+    }
+}
+</script>
+
+
+<h1>JavaScript in Head</h1>
+
+<p id="demo2">A Paragraph.</p>
+
+<button type="button" onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+    document.getElementById("demo2").innerHTML = "Paragraph changed script's function in Html content.";
+}
+</script>
+
+</body>
+</html>
