@@ -1,0 +1,9 @@
+You downloaded this project from javacp.com
+
+I used oracle 11g database in this program and my username is "deepak" and 
+password is "oraclep". You use your own username and password.
+
+You can use any other database.
+
+create a table with name "tblCG" with one columns name "CGName" and 
+another table "tblStud" with four columns StudID, Name, Age, Class, CGroup.

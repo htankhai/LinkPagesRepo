@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+
+<project name="support" default="jar" basedir=".">
+
+   <!-- Properties -->
+
+   <property environment="env"/>
+   <property name="src" value="src"/>
+   <property name="build" value="build"/>
+   <property name="classes" value="${build}/classes"/>
+   <property name="jarfile" value="${ant.project.name}.jar"/>
+   <property name="lib" value="lib"/>
+
+   <!-- Classpath -->
+
+   <path id="classpath">
+      <pathelement location="${classes}"/>
+      <fileset dir="${env.CATALINA_HOME}/common/lib"/>
+   </path>
+
+   <!-- Target: init -->
+
+   <target name="init" description="Entry point">
+      <tstamp/>
+   </target>
+
+   <!-- Target: prepare -->
+
+   <target name="prepare"
+           depends="init"
+           description="Creates build directories">
+      <mkdir dir="${build}"/>
+      <mkdir dir="${classes}"/>
+      <mkdir dir="${lib}"/>
+   </target>
+
+   <!-- Target: compile -->
+
+   <target name="compile"
+           depends="prepare"
+           description="Compiles Java source code">
+      <javac
+         srcdir="${src}"
+         destdir="${classes}"
+         classpathref="classpath"
+         debug="true"
+         deprecation="true"
+         />
+      <copy todir="${classes}">
+         <fileset dir="${src}" excludes="**/*.java"/>
+      </copy>
+
+   </target>
+
+   <!-- Target: jar -->
+
+   <target name="jar"
+           depends="compile"
+           description="Creates jar file from build">
+      <jar jarfile="${lib}/${jarfile}" basedir="${classes}">
+         <!--
+         <manifest>
+            <attribute name="Main-Class" value=""/>
+            <attribute name="Class-Path" value=""/>
+         </manifest>
+         -->
+      </jar>
+   </target>
+
+   <!-- Target: javadoc -->
+
+   <target name="javadoc"
+           depends="prepare"
+           description="Creates API documentation">
+      <javadoc
+         sourcepath="${src}"
+         destdir="${docs}"
+         packagenames="com.*"
+         classpathref="classpath"
+         use="true"
+         />
+   </target>
+
+   <target name="dist" depends="jar" description="Alias for jar"/>
+
+   <!-- Target: clean  -->
+
+   <target name="clean"
+           depends="init"
+           description="Deletes build directories in preparation for a full build">
+      <delete dir="${build}"/>
+   </target>
+
+   <!-- Target: full  -->
+
+   <target name="full" depends="clean,dist" description="Full build"/>
+
+</project>

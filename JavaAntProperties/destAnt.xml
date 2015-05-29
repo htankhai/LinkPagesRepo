@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="run" srcdir="." name="Java Ant compile ane run">
+    <target name="run" depends="compile">
+         </target>
+         <target name="compile" >
+             <javac includeantruntime="true" srcdir="./sourceAnt.dir" destdir="destAnt.dir" />
+         </target>
+</project>

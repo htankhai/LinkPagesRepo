@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sample Java class compile and run"  default="info"  >
+   <property name="projectname" value="htanyahoo.com" />
+     <target name="info" >
+         <echo> Welcome test class in Apache Ant ${ant.version} at ${projectname}
+            </echo>
+     </target>
+</project>

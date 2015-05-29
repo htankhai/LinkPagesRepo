@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="sample Java class compile and run" default="info1">
+	<target name="clean" description="clean target">
+		<echo>Clean target	   </echo>
+	</target>
+	<target name="runpackage" depends="clean,compile">
+	</target>
+	<target name="compile">
+		<java fork="true" failonerror="yes" classname="sourceAnt.JavaAntClass">
+			<arg line="admin@yahoo.com" />
+		</java>
+	</target>
+	<target name="info1" depends="runpackage">
+		<echo> Welcome test class in Apache Ant ${ant.version}		</echo>
+	</target>
+</project>
