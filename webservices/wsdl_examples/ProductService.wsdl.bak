@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProductService"
+  targetNamespace="http://www.ecerami.com/wsdl/ProductService.wsdl"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:tns="http://www.ecerami.com/wsdl/ProductService.wsdl"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsd1="http://www.ecerami.com/schema">
+
+   <types>
+     <xsd:schema
+         targetNamespace="http://www.ecerami.com/schema"
+         xmlns="http://www.w3.org/2001/XMLSchema">
+         <xsd:complexType name="product">
+            <xsd:sequence>
+               <xsd:element name="name" type="xsd:string"/>
+               <xsd:element name="description" type="xsd:string"/>
+               <xsd:element name="price" type="xsd:double"/>
+               <xsd:element name="SKU" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:schema>
+   </types>
+
+   <message name="getProductRequest">
+     <part name="sku" type="xsd:string"/>
+   </message>
+   
+   <message name="getProductResponse">
+     <part name="product" type="xsd1:product"/>
+   </message>
+
+   <portType name="Product_PortType">
+     <operation name="getProduct">
+       <input message="tns:getProductRequest"/>
+       <output message="tns:getProductResponse"/>
+     </operation>
+   </portType>
+
+   <binding name="Product_Binding" type="tns:Product_PortType">
+     <soap:binding style="rpc"
+         transport="http://schemas.xmlsoap.org/soap/http"/>
+     <operation name="getProduct">
+       <soap:operation soapAction="urn:examples:productservice"/>
+       <input>
+         <soap:body
+             encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+             namespace="urn:examples:productservice"
+             use="encoded"/>
+       </input>
+       <output>
+         <soap:body
+             encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+             namespace="urn:examples:productservice" use="encoded"/>
+       </output>
+     </operation>
+   </binding>
+
+   <service name="Product_Service">
+     <port name="Product_Port" binding="tns:Product_Binding">
+       <soap:address
+         location="http://localhost:8080/soap/servlet/rpcrouter"/>
+     </port>
+   </service>
+</definitions>

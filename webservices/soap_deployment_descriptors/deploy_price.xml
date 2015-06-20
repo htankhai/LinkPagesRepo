@@ -1,0 +1,7 @@
+<isd:service 
+   xmlns:isd="http://xml.apache.org/xml-soap/deployment"
+   id="urn:examples:priceservice" checkMustUnderstands="false">
+   <isd:provider type="java" scope="Request" methods="getPrice">
+      <isd:java class="com.ecerami.soap.PriceService" static="false"/>
+   </isd:provider>
+</isd:service>

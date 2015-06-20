@@ -1,0 +1,7 @@
+<isd:service 
+   xmlns:isd="http://xml.apache.org/xml-soap/deployment"
+   id="urn:examples:XMLproductservice" checkMustUnderstands="false">
+   <isd:provider type="java" scope="Request" methods="getProduct">
+      <isd:java class="com.ecerami.soap.ProductXMLService" static="false"/>
+   </isd:provider>
+</isd:service>
