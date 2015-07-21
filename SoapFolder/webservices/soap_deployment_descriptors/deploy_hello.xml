@@ -1,0 +1,7 @@
+<isd:service 
+   xmlns:isd="http://xml.apache.org/xml-soap/deployment"
+   id="urn:examples:helloservice" checkMustUnderstands="false">
+   <isd:provider type="java" scope="Request" methods="sayHello">
+      <isd:java class="com.ecerami.soap.HelloService" static="false"/>
+   </isd:provider>
+</isd:service>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PriceService"
+  targetNamespace="http://www.priceserviceservice.com/PriceService"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:tns="http://www.priceserviceservice.com/PriceService"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<message
+      name="IngetPriceRequest">
+  <part name="meth1_inType1"
+    type="xsd:string"/>
+</message>
+
+<message
+      name="OutgetPriceResponse">
+  <part name="meth1_outType"
+    type="xsd:double"/>
+</message>
+
+<portType
+      name="PriceService">
+  <operation name="getPrice">
+    <input
+        message="tns:IngetPriceRequest"/>
+    <output
+    message="tns:OutgetPriceResponse"/>
+  </operation>
+</portType>
+
+<binding
+    name="PriceServiceBinding" type="tns:PriceService">
+  <soap:binding
+      style="rpc"
+      transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation
+        name="getPrice">
+    <soap:operation
+          soapAction="urn:examples:priceservice"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:examples:priceservice"
+          use="encoded"/>
+    </input>
+    <output>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:examples:priceservice" use="encoded"/>
+    </output>
+  </operation>
+</binding>
+
+<service
+      name="PriceService">
+  <documentation>IBM WSTK 2.0 generated service definition file</documentation>
+  <port
+      binding="PriceServiceBinding"
+        name="tns:PriceServicePort">
+    <soap:address location="http://localhost:8080/soap/servlet/rpcrouter"/>
+  </port>
+</service>
+
+</definitions>

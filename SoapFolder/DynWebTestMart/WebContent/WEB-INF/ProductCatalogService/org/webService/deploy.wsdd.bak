@@ -1,0 +1,109 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ProductCatalogService WSDL service -->
+
+  <service name="ProductCatalog" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webService.org"/>
+      <parameter name="wsdlServiceElement" value="ProductCatalogService"/>
+      <parameter name="schemaQualified" value="http://webService.org"/>
+      <parameter name="wsdlServicePort" value="ProductCatalog"/>
+      <parameter name="className" value="org.webService.ProductCatalogSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ProductCatalog"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getProducts" qname="operNS:getProducts" xmlns:operNS="http://webService.org" returnQName="retNS:getProductsReturn" xmlns:retNS="http://webService.org" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webService.org" returnItemQName="tns:item" xmlns:tns="http://webService.org" soapAction="" >
+        <parameter qname="pns:product" xmlns:pns="http://webService.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addProducts" qname="operNS:addProducts" xmlns:operNS="http://webService.org" returnQName="retNS:addProductsReturn" xmlns:retNS="http://webService.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:group" xmlns:pns="http://webService.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:product" xmlns:pns="http://webService.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getProducts2" qname="operNS:getProducts2" xmlns:operNS="http://webService.org" returnQName="retNS:getProducts2Return" xmlns:retNS="http://webService.org" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webService.org" returnItemQName="tns:item" xmlns:tns="http://webService.org" soapAction="" >
+        <parameter qname="pns:product" xmlns:pns="http://webService.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getProductGroups" qname="operNS:getProductGroups" xmlns:operNS="http://webService.org" returnQName="retNS:getProductGroupsReturn" xmlns:retNS="http://webService.org" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webService.org" returnItemQName="tns:item" xmlns:tns="http://webService.org" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getProducts2 getProductGroups getProducts addProducts"/>
+
+      <typeMapping
+        xmlns:ns="http://webService.org"
+        qname="ns:>getProductGroups"
+        type="java:org.webService.GetProductGroups"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webService.org"
+        qname="ns:>getProducts"
+        type="java:org.webService.GetProducts"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webService.org"
+        qname="ns:>getProductsResponse"
+        type="java:org.webService.GetProductsResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webService.org"
+        qname="ns:>addProductsResponse"
+        type="java:org.webService.AddProductsResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webService.org"
+        qname="ns:>addProducts"
+        type="java:org.webService.AddProducts"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webService.org"
+        qname="ns:>getProducts2Response"
+        type="java:org.webService.GetProducts2Response"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webService.org"
+        qname="ns:>getProductGroupsResponse"
+        type="java:org.webService.GetProductGroupsResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webService.org"
+        qname="ns:>getProducts2"
+        type="java:org.webService.GetProducts2"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://webService.org"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

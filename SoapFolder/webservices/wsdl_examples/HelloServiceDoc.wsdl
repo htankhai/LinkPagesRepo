@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="HelloService"
+   targetNamespace="http://www.ecerami.com/wsdl/HelloService.wsdl"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:tns="http://www.ecerami.com/wsdl/HelloService.wsdl"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsd1="http://www.ecerami.com/schema">
+
+   <types>
+      <schema 
+         xmlns="http://www.w3.org/2001/XMLSchema"
+         targetNamespace="http://www.ecerami.com/schema">
+         <element name="sayHello">
+            <complexType>
+               <sequence>
+                  <element minOccurs="1" maxOccurs="1" name="firstName" type="xsd:string" /> 
+               </sequence>
+            </complexType>
+         </element>
+         <element name="sayHelloResponse">
+            <complexType>
+               <sequence>
+                  <element minOccurs="1" maxOccurs="1" name="greeting" type="xsd:string" /> 
+               </sequence>
+            </complexType>
+         </element>
+      </schema>
+   </types>
+
+   <message name="SayHelloRequest">
+      <part name="firstName" element="xsd1:sayHello"/>
+   </message>
+   <message name="SayHelloResponse">
+      <part name="greeting" element="xsd1:sayHelloResponse"/>
+   </message>
+
+   <portType name="Hello_PortType">
+      <operation name="sayHello">
+         <input message="tns:SayHelloRequest"/>
+         <output message="tns:SayHelloResponse"/>
+      </operation>
+   </portType>
+   
+   <binding name="Hello_Binding" type="tns:Hello_PortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+      <operation name="sayHello">
+         <soap:operation soapAction="sayHello"/>
+         <input>
+            <soap:body use="literal" namespace="urn:examples:helloservice"/>
+         </input>
+         <output>
+            <soap:body use="literal" namespace="urn:examples:helloservice"/>
+         </output>
+      </operation>
+   </binding>
+
+   <service name="Hello_Service">
+      <documentation>WSDL File for HelloService</documentation>
+      <port binding="tns:Hello_Binding" name="Hello_Port">
+         <soap:address location="http://localhost:8070/soap/servlet/rpcrouter"/>
+      </port>
+   </service>
+</definitions>
